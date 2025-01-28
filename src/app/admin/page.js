@@ -198,9 +198,18 @@ export default function AdminView() {
   }
 
   console.log(allData, homeViewFormData, "homeViewFormData");
+
+  useEffect(() => {
+    setAuthUser(JSON.parse(sessionStorage.getItem("authUser")));
+  }, []);
+
   async function handleLogin() {
     const res = await login(loginFormData);
     console.log(res, "login");
+    if (res?.success) {
+      setAuthUser(true);
+      sessionStorage.setItem("authUser", JSON.stringify(true));
+    }
   }
 
   if (!authUser) {
@@ -248,6 +257,15 @@ export default function AdminView() {
           );
         })}
       </div>
+      <button
+        onClick={() => {
+          setAuthUser(false);
+          sessionStorage.removeItem("authUser");
+        }}
+        className="fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
+      >
+        Logout
+      </button>
     </div>
   );
 }

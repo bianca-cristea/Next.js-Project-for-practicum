@@ -26,7 +26,7 @@ export default function Login({ formData, setFormData, handleLogin }) {
           onClick={() => handleLogin()}
           className="mt-[10px] border hover:bg-blue-700 hover:text-white border-blue-700 p-4 font-bold text-[16px]  transition-colors duration-300 ease-in-out"
         >
-          Add Info
+          Login
         </button>
       </div>
     </div>
