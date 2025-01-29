@@ -9,13 +9,6 @@ import ClientResearchView from "../research";
 import ClientTeachingView from "../teaching";
 import ClientCompetitiveProgrammingView from "../competitive-programming";
 import ClientPassionsView from "../passions";
-// import AdminCompetitiveProgrammingView from "@/components/admin-view/competitive-programming";
-// import AdminEducationView from "@/components/admin-view/education";
-// import AdminHomeView from "@/components/admin-view/home";
-// import AdminHPassionsView from "@/components/admin-view/passions";
-// import AdminResearchView from "@/components/admin-view/research";
-// import AdminSoftwareEngineeringView from "@/components/admin-view/software-engineering";
-// import AdminTeachingView from "@/components/admin-view/teaching";
 
 const menuItems = [
   {
@@ -87,29 +80,7 @@ function CreateMenus({ activeLink, getMenuItems, setActiveLink }) {
   ));
 }
 
-// export default function SidebarMenu() {
-//   const [activeLink, setActiveLink] = useState("passions");
-
-//   return (
-//     <nav className="overflow-x-auto flex flex-col items-center border-r border-blue-700 w-1/4 p-6 h-full space-y-6">
-//       <img
-//         className="h-auto w-1/2 m-0"
-//         src="https://unibuc.ro/wp-content/uploads/2019/02/Logo-UB-vertical-COLOR.jpg"
-//         alt="University logo"
-//       />
-//       <div className="space-y-4 w-full font-semibold text-sm">
-//         <CreateMenus
-//           setActiveLink={setActiveLink}
-//           activeLink={activeLink}
-//           getMenuItems={menuItems}
-//         />
-//       </div>
-//     </nav>
-//   );
-// }
-export default function SidebarMenu({ setActiveComponent }) {
-  const [activeLink, setActiveLink] = useState("home");
-
+export default function SidebarMenu({ setActiveComponent, activeLink }) {
   return (
     <nav className="overflow-x-auto flex flex-col items-center border-r border-blue-700 w-1/4 p-6 h-full space-y-6">
       <img
@@ -122,8 +93,7 @@ export default function SidebarMenu({ setActiveComponent }) {
           <div
             key={item.id}
             onClick={() => {
-              setActiveLink(item.id);
-              setActiveComponent(item.id); // Setează secțiunea activă în părinte
+              setActiveComponent(item.id);
             }}
             className={`px-4 py-2 cursor-pointer block text-center ${
               activeLink === item.id
