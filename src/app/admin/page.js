@@ -225,18 +225,22 @@ export default function AdminView() {
   return (
     <div className="flex h-screen">
       <nav
-        className="flex flex-col justify-center border-r border-blue-700 space-y-4 w-1/4  h-full"
+        className="flex flex-col items-center border-r border-blue-700 w-1/4 p-6 h-full space-y-6"
         role="tablist"
       >
         <img
-          className="h-auto w-1/3 m-auto border-b border-blue-700"
+          className="h-auto w-1/2 m-0"
           src="https://unibuc.ro/wp-content/uploads/2019/02/Logo-UB-vertical-COLOR.jpg"
         />
         {menuItems.map((item) => (
           <button
             key={item.id}
             type="button"
-            className="p-3 hover:bg-blue-700 hover:text-white font-bold text-l text-black transition-colors duration-300 ease-in-out"
+            className={`space-y-3 w-full font-semibold text-sm p-1 hover:bg-gray-100 hover:text-blue-700 mt-1 ${
+              item.id === currentSelectedTab
+                ? "text-blue-700 border-l-4 border-blue-700"
+                : ""
+            }`}
             onClick={() => {
               setCurrentSelectedTab(item.id);
               resetFormDatas();
@@ -262,7 +266,7 @@ export default function AdminView() {
           setAuthUser(false);
           sessionStorage.removeItem("authUser");
         }}
-        className="fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
+        className="fixed bottom-4  bg-white-500 right-5 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
       >
         Logout
       </button>

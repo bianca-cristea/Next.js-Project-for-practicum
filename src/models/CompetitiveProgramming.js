@@ -5,8 +5,8 @@ const CompetitiveProgrammingSchema = new mongoose.Schema({
   description: { type: String },
 });
 
-const CompetitiveProgramming = mongoose.model(
-  "CompetitiveProgramming",
-  CompetitiveProgrammingSchema
-);
+const CompetitiveProgramming =
+  mongoose.models.CompetitiveProgramming ||
+  mongoose.model("CompetitiveProgramming", CompetitiveProgrammingSchema);
+
 export default CompetitiveProgramming;

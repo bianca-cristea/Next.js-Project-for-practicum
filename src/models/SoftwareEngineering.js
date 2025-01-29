@@ -8,9 +8,8 @@ const SoftwareEngineeringSchema = new mongoose.Schema({
   location: { type: String, required: true },
 });
 
-const SoftwareEngineering = mongoose.model(
-  "SoftwareEngineering",
-  SoftwareEngineeringSchema
-);
+const SoftwareEngineering =
+  mongoose.models.SoftwareEngineering ||
+  mongoose.model("SoftwareEngineering", SoftwareEngineeringSchema);
 
 export default SoftwareEngineering;

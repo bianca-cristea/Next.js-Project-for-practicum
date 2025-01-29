@@ -14,6 +14,7 @@ const PassionSchema = new mongoose.Schema({
   },
 });
 
-const Passion = mongoose.model("Passion", PassionSchema);
+const Passion =
+  mongoose.models.Passion || mongoose.model("Passion", PassionSchema);
 
 export default Passion;

@@ -18,5 +18,7 @@ const ResearchSchema = new mongoose.Schema({
     required: true,
   },
 });
-const Research = mongoose.model("Research", ResearchSchema);
+const Research =
+  mongoose.models.Research || mongoose.model("Research", ResearchSchema);
+
 export default Research;

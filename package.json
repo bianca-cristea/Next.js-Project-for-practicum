@@ -14,11 +14,13 @@
     "@mui/lab": "^6.0.0-beta.24",
     "@mui/material": "^6.4.1",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.0.6",
     "mongoose": "^8.9.5",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
     "react-scroll": "^1.9.0",
     "react-slick": "^0.30.3"
   },
