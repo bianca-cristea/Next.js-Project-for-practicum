@@ -13,66 +13,44 @@ import { motion } from "framer-motion";
 
 export default function ClientSoftwareEngineeringView({ data }) {
   return (
-    <div
-      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
-      id="software-engineering"
-    >
-      <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8">
-        <div className="flex flex-col gap-5">
-          <AnimationWrapper className={"py-6 sm:py-16"}>
-            <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-              <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
-                {"My Software Engineering Experience"
-                  .split(" ")
-                  .map((item, index) => (
-                    <span
-                      key={index}
-                      className={`${
-                        index === 1 ? "text-blue-main" : "text-[#000]"
-                      }`}
-                    >
-                      {item}{" "}
-                    </span>
-                  ))}
-              </h1>
-            </div>
-          </AnimationWrapper>
+    <div className="max-w-screen-xl  mx-auto  mb-3" id="software-engineering">
+      <div className="flex flex-col gap-1">
+        <AnimationWrapper className={"py-4"}>
+          <h1 className="ml-0 text-left leading-tight text-2xl sm:text-2xl lg:text-4xl text-blue-700 ">
+            My Software Engineering Experience
+          </h1>
+        </AnimationWrapper>
 
-          <AnimationWrapper>
-            <div className="flex w-full">
-              <motion.div className="container">
-                <Timeline position="right">
-                  {data && data.length
-                    ? data.map((softwareEngineeringItem, index) => (
-                        <TimelineItem key={index}>
-                          <TimelineSeparator>
-                            <TimelineDot className="bg-blue-main" />
-                            <TimelineConnector className="bg-blue-main" />
-                          </TimelineSeparator>
-                          <TimelineContent>
-                            <div className="border-[2px] p-4 rounded-[8px] border-blue-main mt-[14px] ml-[16px]">
-                              <p className="font-bold">
-                                {softwareEngineeringItem.position}
-                              </p>
-                              <h3 className="font-extrabold mt-2">
-                                {softwareEngineeringItem.company}
-                              </h3>
-                              <p className="font-extrabold mt-2">
-                                {softwareEngineeringItem.duration}
-                              </p>
-                              <p className="font-extralight mt-2">
-                                {softwareEngineeringItem.location}
-                              </p>
-                            </div>
-                          </TimelineContent>
-                        </TimelineItem>
-                      ))
-                    : null}
-                </Timeline>
-              </motion.div>
-            </div>
-          </AnimationWrapper>
-        </div>
+        <AnimationWrapper>
+          <Timeline className="flex flex-col items-start">
+            {data && data.length
+              ? data.map((softwareEngineeringItem, index) => (
+                  <TimelineItem key={index}>
+                    <TimelineSeparator className="flex flex-col items-center">
+                      <TimelineDot className="bg-blue-500 w-3 h-3" />
+                      <TimelineConnector className="bg-blue-300 w-1" />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div className="border-[1px] p-6 rounded-lg sm:rounded-xl  w-max border-blue-700 mt-4 shadow-lg bg-white">
+                        <p className="font-semibold text-sm sm:text-base text-blue-600">
+                          {softwareEngineeringItem.position}
+                        </p>
+                        <h3 className="font-bold text-base sm:text-lg mt-2 text-blue-800">
+                          {softwareEngineeringItem.company}
+                        </h3>
+                        <p className="font-medium text-sm sm:text-base mt-2 text-gray-600">
+                          {softwareEngineeringItem.duration}
+                        </p>
+                        <p className="font-light text-sm sm:text-base mt-2 text-gray-400">
+                          {softwareEngineeringItem.location}
+                        </p>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))
+              : null}
+          </Timeline>
+        </AnimationWrapper>
       </div>
     </div>
   );

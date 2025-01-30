@@ -27,18 +27,21 @@ function variants() {
 const socialIcons = [
   {
     id: "linkedin",
+    link: "https://www.linkedin.com/in/marius-dumitran-a14a3527/",
     icon: (
       <FaLinkedinIn color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />
     ),
   },
   {
     id: "google-scholar",
+    link: "https://scholar.google.com/citations?user=GZMg4eUAAAAJ&hl=ro&oi=ao",
     icon: (
       <FaGoogle color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />
     ),
   },
   {
     id: "resume",
+    link: "https://www.linkedin.com/in/marius-dumitran-a14a3527/",
     icon: (
       <FaAddressBook
         color="rgb(29, 78, 216,1)"
@@ -48,6 +51,7 @@ const socialIcons = [
   },
   {
     id: "phd-Thesis",
+    link: "http://fmi.unibuc.ro/ro/pdf/2015/doctorat/rezumatDumitran-en.pdf",
     icon: <FaAward color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />,
   },
 ];
@@ -102,7 +106,9 @@ export default function ClientHomeView({ data }) {
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
                 >
-                  {item.icon}
+                  <a href={item.link} target="_blank">
+                    {item.icon}
+                  </a>
                 </motion.div>
               ))}
             </motion.div>
@@ -114,7 +120,7 @@ export default function ClientHomeView({ data }) {
               className="w-[400px] h-[400px] relative bg-green-main"
             >
               <div className="relative">
-                <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
+                <div className="w-[350px] h-[350px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
 
                 <Image
                   src={picture}
@@ -123,7 +129,7 @@ export default function ClientHomeView({ data }) {
                   quality={100}
                   height={200}
                   width={200}
-                  className="absolute top-[-15px]"
+                  className="absolute top-[-15px] rounded-sm"
                 />
               </div>
             </motion.div>
