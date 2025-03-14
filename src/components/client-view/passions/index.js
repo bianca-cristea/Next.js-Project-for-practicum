@@ -43,7 +43,7 @@ export default function ClientPassionsView({ data }) {
           <div className="flex justify-center items-center relative">
             <button
               onClick={prevImage}
-              className="absolute left-0 p-4 bg-gray-500 text-white rounded-full"
+              className="absolute left-0 p-4 bg-[#34a5f9] text-white-300 rounded-full"
             >
               &lt;
             </button>
@@ -60,7 +60,7 @@ export default function ClientPassionsView({ data }) {
 
             <button
               onClick={nextImage}
-              className="absolute right-0 p-4 bg-gray-500 text-white rounded-full"
+              className="absolute right-0 p-4 bg-[#34a5f9] text-white-300 rounded-full"
             >
               &gt;
             </button>

@@ -20,15 +20,34 @@ export default function ClientResearchView({ data }) {
           <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
             My Publications
           </h1>
-          <svg id="progress" width={100} height={80} viewBox="0 0 100 100">
-            <circle
-              cx={"30"}
-              cy={"30"}
-              r="10"
-              pathLength={"2"}
-              className="stroke-[#040814]"
-            />
-          </svg>
+          <div className="flex justify-center m-5">
+            <svg id="progress" width={80} height={80} viewBox="0 0 100 100">
+              <circle
+                cx={50}
+                cy={50}
+                r={15}
+                stroke="#3465f9"
+                strokeWidth={3}
+                fill="none"
+              />
+              <circle
+                cx={50}
+                cy={50}
+                r={10}
+                stroke="#34d5f9"
+                strokeWidth={3}
+                fill="none"
+              />
+              <circle
+                cx={50}
+                cy={50}
+                r={5}
+                stroke="#34a5f9"
+                strokeWidth={3}
+                fill="none"
+              />
+            </svg>
+          </div>
         </div>
       </AnimationWrapper>
       <AnimationWrapper>

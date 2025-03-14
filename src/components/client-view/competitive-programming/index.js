@@ -30,42 +30,14 @@ export default function ClientCompetitiveProgrammingView({ data }) {
 
   return (
     <div
-      className="fixed ml-10 max-w-screen-xl mt-10 mb-6 sm:mt-10 sm:mb-14 px-6 sm:px-8 lg:px-9 mx-auto"
+      className="flex-col justify-between fixed ml-10 max-w-screen-xl mt-10 mb-6 sm:mt-10 sm:mb-14 px-6 sm:px-8 lg:px-9 mx-auto"
       id="project"
     >
       <AnimationWrapper>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-4 text-2xl lg:text-4xl xl:text-5xl font-medium">
+          <h1 className="leading-[70px] mb-20 text-2xl lg:text-4xl xl:text-5xl font-medium">
             Competitive Programming
           </h1>
-          <div className="flex justify-center m-5">
-            <svg id="progress" width={80} height={80} viewBox="0 0 100 100">
-              <circle
-                cx={50}
-                cy={50}
-                r={15}
-                stroke="#3465f9"
-                strokeWidth={3}
-                fill="none"
-              />
-              <circle
-                cx={50}
-                cy={50}
-                r={10}
-                stroke="#34d5f9"
-                strokeWidth={3}
-                fill="none"
-              />
-              <circle
-                cx={50}
-                cy={50}
-                r={5}
-                stroke="#34a5f9"
-                strokeWidth={3}
-                fill="none"
-              />
-            </svg>
-          </div>
         </div>
       </AnimationWrapper>
 
@@ -88,7 +60,7 @@ export default function ClientCompetitiveProgrammingView({ data }) {
                               }
                               target="_blank"
                             >
-                              <h3 className="text-xl text-black-600 capitalize">
+                              <h3 className="text-lg text-black-600 capitalize">
                                 {item.title}
                               </h3>
                             </a>
@@ -106,7 +78,7 @@ export default function ClientCompetitiveProgrammingView({ data }) {
           <div className="w-96 h-70 flex justify-center items-center relative">
             <button
               onClick={prevImage}
-              className="absolute left-[-15] p-4 bg-gray-500 text-white rounded-full"
+              className="absolute left-[-15] p-4 bg-[#34a5f9] text-white-300 rounded-full"
             >
               &lt;
             </button>
@@ -120,7 +92,7 @@ export default function ClientCompetitiveProgrammingView({ data }) {
             </div>
             <button
               onClick={nextImage}
-              className="absolute right-[-15] p-4 bg-gray-500 text-white rounded-full"
+              className="absolute right-[-15] p-4 bg-[#34a5f9] text-white-300 rounded-full"
             >
               &gt;
             </button>

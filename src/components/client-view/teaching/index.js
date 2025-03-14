@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { motion, useScroll } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,19 @@ export default function ClientTeachingView({ data }) {
   const containerRef = useRef(null);
   const { scrollXProgress } = useScroll({ container: containerRef });
   const router = useRouter();
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option === selectedOption ? null : option);
+  };
+
+  const dataStructuri = data?.filter((item) =>
+    item.course.toLowerCase().includes("structuri de date")
+  );
+  const dataAlgoritmi = data?.filter((item) =>
+    item.course.toLowerCase().includes("algoritmi fundamentali")
+  );
 
   return (
     <div
@@ -22,30 +35,52 @@ export default function ClientTeachingView({ data }) {
           </h1>
         </div>
       </AnimationWrapper>
-      <AnimationWrapper>
-        <ul className="project-wrapper" ref={containerRef}>
-          {data && data.length
-            ? data.map((item, index) => (
-                <li
-                  className="w-full flex items-stretch cursor-pointer"
-                  key={index}
-                >
-                  <div className="border-2 w-full relative border-blue-main transition-all rounded-lg flex flex-col">
-                    <div className="flex justify-center  p-4 flex-col xl:flex-row w-full items-stretch">
-                      <div className="flex flex-row justify-between items-center w-full xl:w-1/2">
-                        <div className="flex flex-col">
-                          <a href={item.link} target="_blank">
-                            {item.course}
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+
+      <div className="flex flex-col items-center">
+        <button
+          onClick={() => handleOptionClick("structuri")}
+          className="mb-2 p-2 w-full border-2 rounded bg-blue-700 text-white-300"
+        >
+          Structuri de date
+        </button>
+        {selectedOption === "structuri" && (
+          <div className="flex flex-col p-4 border rounded shadow-md mt-1 mb-3">
+            {dataStructuri && dataStructuri.length > 0 ? (
+              dataStructuri.map((item, index) => (
+                <div key={index}>
+                  <a href={item.link} target="_blank" className="text-blue-600">
+                    {item.course}
+                  </a>
+                </div>
               ))
-            : null}
-        </ul>
-      </AnimationWrapper>
+            ) : (
+              <p>No courses found for Structuri de date.</p>
+            )}
+          </div>
+        )}
+
+        <button
+          onClick={() => handleOptionClick("algoritmi")}
+          className="mb-2 p-2 w-full border-2 rounded bg-blue-700 text-white-300"
+        >
+          Algoritmi fundamentali
+        </button>
+        {selectedOption === "algoritmi" && (
+          <div className="flex flex-col p-4 border rounded shadow-md mt-1">
+            {dataAlgoritmi && dataAlgoritmi.length > 0 ? (
+              dataAlgoritmi.map((item, index) => (
+                <div key={index}>
+                  <a href={item.link} target="_blank" className="text-blue-600">
+                    {item.course}
+                  </a>
+                </div>
+              ))
+            ) : (
+              <p>No courses found for Algoritmi fundamentali.</p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

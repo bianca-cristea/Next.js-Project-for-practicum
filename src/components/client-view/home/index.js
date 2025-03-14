@@ -77,7 +77,7 @@ export default function ClientHomeView({ data }) {
           variants={setVariants}
         >
           <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
-            <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
+            <h1 className="mb-4  text-3xl lg:text-4xl xl:text-6xl font-sm leading-normal">
               {data && data.length
                 ? data[0]?.name.split(" ").map((item, index) => (
                     <p key={index} className="text-[#000]">
@@ -127,7 +127,7 @@ export default function ClientHomeView({ data }) {
               className="w-[400px] h-[400px] relative bg-green-main"
             >
               <div className="relative">
-                <div className="w-[350px] h-[350px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
+                <div className="w-[350px] h-[350px] top-[40px] left-[-30px] rounded-lg border-[4px] border-b-black-900 absolute"></div>
 
                 <Image
                   src={picture}
@@ -136,7 +136,7 @@ export default function ClientHomeView({ data }) {
                   quality={100}
                   height={150}
                   width={150}
-                  className="absolute top-[-15px] rounded-sm"
+                  className="absolute top-[-15px] rounded-md"
                 />
               </div>
             </motion.div>
