@@ -1,63 +1,144 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { motion, useScroll } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import img1 from "../../../assets/concursuri1.jpg";
+import img2 from "../../../assets/concursuri2.jpg";
+import img3 from "../../../assets/concursuri3.jpg";
+import img4 from "../../../assets/concursuri4.jpg";
+import img5 from "../../../assets/concursuri5.jpg";
 
 export default function ClientCompetitiveProgrammingView({ data }) {
   const containerRef = useRef(null);
   const { scrollXProgress } = useScroll({ container: containerRef });
   const router = useRouter();
+  const images = [img1, img2, img3, img4, img5];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
   return (
     <div
-      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
+      className="fixed ml-10 max-w-screen-xl mt-10 mb-6 sm:mt-10 sm:mb-14 px-6 sm:px-8 lg:px-9 mx-auto"
       id="project"
     >
-      <AnimationWrapper className={"py-6"}>
+      <AnimationWrapper>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
+          <h1 className="leading-[70px] mb-4 text-2xl lg:text-4xl xl:text-5xl font-medium">
             Competitive Programming
           </h1>
-          <svg id="progress" width={100} height={80} viewBox="0 0 100 100">
-            <circle
-              cx={"30"}
-              cy={"30"}
-              r="20"
-              pathLength={"2"}
-              className="stroke-[#000]"
-            />
-          </svg>
+          <div className="flex justify-center m-5">
+            <svg id="progress" width={80} height={80} viewBox="0 0 100 100">
+              <circle
+                cx={50}
+                cy={50}
+                r={15}
+                stroke="#3465f9"
+                strokeWidth={3}
+                fill="none"
+              />
+              <circle
+                cx={50}
+                cy={50}
+                r={10}
+                stroke="#34d5f9"
+                strokeWidth={3}
+                fill="none"
+              />
+              <circle
+                cx={50}
+                cy={50}
+                r={5}
+                stroke="#34a5f9"
+                strokeWidth={3}
+                fill="none"
+              />
+            </svg>
+          </div>
         </div>
       </AnimationWrapper>
-      <AnimationWrapper>
-        <ul className="project-wrapper" ref={containerRef}>
-          {data && data.length
-            ? data.map((item, index) => (
-                <li
-                  className="w-full flex items-stretch cursor-pointer"
-                  key={index}
-                >
-                  <div className="border-2 w-full relative border-green-main transition-all rounded-lg flex flex-col">
-                    <div className="flex p-4 flex-col xl:flex-row w-full items-stretch xl:items-center">
-                      <div className="flex order-2 xl:order-1">
-                        <div className="flex flex-col">
-                          <h3 className="text-3xl text-black-600 capitalize font-extrabold">
-                            {item.title}
-                          </h3>
-                          <p className="text-sm mt-2 text-black-500  font-bold">
-                            {item.description}
-                          </p>
+
+      <div className="flex">
+        <AnimationWrapper>
+          <ul className="project-wrapper" ref={containerRef}>
+            {data && data.length
+              ? data.map((item, index) => (
+                  <li
+                    className="w-full flex items-stretch cursor-pointer"
+                    key={index}
+                  >
+                    <div className="border-1 w-full relative transition-all rounded-lg flex flex-col">
+                      <div className="flex p-4 flex-col xl:flex-row w-full items-stretch xl:items-center">
+                        <div className="flex order-2 xl:order-1">
+                          <div className="flex flex-col">
+                            <a
+                              href={
+                                item.description ? item.description : undefined
+                              }
+                              target="_blank"
+                            >
+                              <h3 className="text-xl text-black-600 capitalize">
+                                {item.title}
+                              </h3>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))
-            : null}
-        </ul>
-      </AnimationWrapper>
+                  </li>
+                ))
+              : null}
+          </ul>
+        </AnimationWrapper>
+
+        <div className="relative h-70 w-1/2 mx-auto">
+          <div className="w-96 h-70 flex justify-center items-center relative">
+            <button
+              onClick={prevImage}
+              className="absolute left-[-15] p-4 bg-gray-500 text-white rounded-full"
+            >
+              &lt;
+            </button>
+            <div className="w-96 h-60 m-3 overflow-hidden flex justify-center items-center">
+              <Image
+                src={images[currentIndex]}
+                alt={`Image ${currentIndex + 1}`}
+                width={800}
+                height={400}
+              />
+            </div>
+            <button
+              onClick={nextImage}
+              className="absolute right-[-15] p-4 bg-gray-500 text-white rounded-full"
+            >
+              &gt;
+            </button>
+          </div>
+
+          <div className="flex justify-center mt-4 h-full">
+            {images.map((pic, index) => (
+              <img
+                key={index}
+                src={pic}
+                className={`w-2 mx-1 rounded-full object-cover h-full shadow-black-600 ${
+                  index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

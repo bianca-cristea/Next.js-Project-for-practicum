@@ -37,6 +37,34 @@ export default function AdminResearchView({
   return (
     <div className="w-full">
       <h1 className=" p-3 text-blue-700 text-xl">Research</h1>
+      <div className="flex justify-center m-5">
+        <svg id="progress" width={80} height={80} viewBox="0 0 100 100">
+          <circle
+            cx={50}
+            cy={50}
+            r={15}
+            stroke="#3465f9"
+            strokeWidth={3}
+            fill="none"
+          />
+          <circle
+            cx={50}
+            cy={50}
+            r={10}
+            stroke="#34d5f9"
+            strokeWidth={3}
+            fill="none"
+          />
+          <circle
+            cx={50}
+            cy={50}
+            r={5}
+            stroke="#34a5f9"
+            strokeWidth={3}
+            fill="none"
+          />
+        </svg>
+      </div>
       <div className="mb-10">
         {data && data.length
           ? data.map((item, idx) => (

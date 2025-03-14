@@ -3,7 +3,9 @@
 import { useMemo, useRef } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
-import { FaLinkedinIn, FaGoogle, FaAward, FaAddressBook } from "react-icons/fa";
+import { FaGoogleScholar } from "react-icons/fa6";
+import { FaLinkedinIn, FaAward, FaBookOpen } from "react-icons/fa";
+import { TbFileCv } from "react-icons/tb";
 import Image from "next/image";
 import picture from "../../../assets/poza-profil.jpeg";
 
@@ -26,33 +28,36 @@ function variants() {
 
 const socialIcons = [
   {
-    id: "linkedin",
+    id: "Linkedin",
     link: "https://www.linkedin.com/in/marius-dumitran-a14a3527/",
     icon: (
       <FaLinkedinIn color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />
     ),
   },
   {
-    id: "google-scholar",
+    id: "Google-scholar",
     link: "https://scholar.google.com/citations?user=GZMg4eUAAAAJ&hl=ro&oi=ao",
     icon: (
-      <FaGoogle color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />
-    ),
-  },
-  {
-    id: "resume",
-    link: "https://www.linkedin.com/in/marius-dumitran-a14a3527/",
-    icon: (
-      <FaAddressBook
+      <FaGoogleScholar
         color="rgb(29, 78, 216,1)"
         className="w-[40px] h-[40px] "
       />
     ),
   },
   {
-    id: "phd-Thesis",
-    link: "http://fmi.unibuc.ro/ro/pdf/2015/doctorat/rezumatDumitran-en.pdf",
-    icon: <FaAward color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />,
+    id: "Resume",
+    link: "",
+    icon: (
+      <TbFileCv color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px] " />
+    ),
+  },
+  {
+    id: "PhD-Thesis",
+    link: "https://arxiv.org/abs/2501.06949",
+
+    icon: (
+      <FaBookOpen color="rgb(29, 78, 216,1)" className="w-[40px] h-[40px]" />
+    ),
   },
 ];
 
@@ -63,11 +68,11 @@ export default function ClientHomeView({ data }) {
   const containerRef = useRef(null);
 
   return (
-    <div className="h-screen px-8 xl:px-16 mx-auto" id="home">
+    <div className="h-screen fixed m-0 p-0 px-8 xl:px-16 " id="home">
       <AnimationWrapper>
         <motion.div
           className={
-            "grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16"
+            "grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-20 py-6 sm:py-16"
           }
           variants={setVariants}
         >
@@ -75,40 +80,42 @@ export default function ClientHomeView({ data }) {
             <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
               {data && data.length
                 ? data[0]?.name.split(" ").map((item, index) => (
-                    <span
-                      key={index}
-                      className={`${
-                        index === 2 || index === 3
-                          ? "text-blue-main"
-                          : "text-[#000]"
-                      }`}
-                    >
-                      {item}{" "}
-                    </span>
+                    <p key={index} className="text-[#000]">
+                      {item}
+                    </p>
                   ))
                 : null}
             </h1>
-            <p className="text-[#000] mt-4 mb-8 font-bold">
-              {data && data.length ? data[0]?.title : null}
-            </p>
+            <ul className="text-[#000] mt-4 mb-8 font-semibold list-disc">
+              {data && data.length
+                ? data[0]?.title.split(",").map((item, idx) => (
+                    <li className="m-2" key={idx}>
+                      {item}
+                    </li>
+                  ))
+                : null}
+            </ul>
             <motion.div className="flex gap-3 cursor-pointer">
               {socialIcons.map((item) => (
                 <motion.div
                   key={item.id}
+                  className="relative group"
                   initial={{ scale: 0 }}
                   animate={{ rotate: 360, scale: 1 }}
                   transition={{
                     type: "spring",
                     damping: 20,
                     stiffness: 80,
-                    duration: 4,
+                    duration: 1,
                   }}
                   whileHover={{ scale: 1.2, rotate: 360 }}
-                  whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
                 >
-                  <a href={item.link} target="_blank">
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
                     {item.icon}
                   </a>
+                  <span className="absolute top-full left-1/2 -translate-x-1/2  mb-1 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.id}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
@@ -127,8 +134,8 @@ export default function ClientHomeView({ data }) {
                   alt="Profile Picture"
                   layout="responsive"
                   quality={100}
-                  height={200}
-                  width={200}
+                  height={150}
+                  width={150}
                   className="absolute top-[-15px] rounded-sm"
                 />
               </div>

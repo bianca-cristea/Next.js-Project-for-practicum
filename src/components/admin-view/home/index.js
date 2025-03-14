@@ -37,9 +37,13 @@ export default function AdminHomeView({
           onClick={() => handleSaveData("home")}
           className="mt-[10px] border hover:bg-blue-700 hover:text-white-500 border-blue-700 p-4 font-bold text-[16px]  transition-colors duration-300 ease-in-out"
         >
-          Add Info
+          Edit Info
         </button>
       </div>
+      <p className="text-gray-600 text-sm">
+        (In the title section, the input is split by commas and displayed as a
+        bullet-point list.)
+      </p>
     </div>
   );
 }

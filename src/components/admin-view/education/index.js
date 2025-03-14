@@ -36,16 +36,19 @@ export default function AdminEducationView({
       <div className="bg-[#ffffff] shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-10">
           {data && data.length
-            ? data.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col gap-4 border p-4 border-blue-700"
-                >
-                  <p>{item.degree}</p>
-                  <p>{item.years}</p>
-                  <p>{item.college}</p>
-                </div>
-              ))
+            ? data
+                .slice()
+                .reverse()
+                .map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col gap-4 border p-4 border-blue-700"
+                  >
+                    <p>{item.degree}</p>
+                    <p>{item.years}</p>
+                    <p>{item.college}</p>
+                  </div>
+                ))
             : null}
         </div>
         <FormControls

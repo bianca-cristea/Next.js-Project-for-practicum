@@ -44,7 +44,21 @@ export async function updateData(currentTab, formData) {
     console.log(error);
   }
 }
-
+export async function deleteData(currentTab, id) {
+  try {
+    const response = await fetch(`/api/${currentTab}/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function login(formData) {
   try {
     const response = await fetch(`/api/login`, {

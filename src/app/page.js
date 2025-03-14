@@ -75,7 +75,7 @@ export default function Page() {
         setActiveComponent={setActiveComponent}
         activeLink={activeComponent}
       />
-      <main className="h-full w-3/4 overflow-x-auto p-6">
+      <main className="h-full w-3/4 overflow-x-auto p-0">
         {ActiveComponent ? (
           <ActiveComponent data={data[activeComponent]} />
         ) : (
