@@ -28,6 +28,7 @@ export default function AdminEducationView({
   setFormData,
   handleSaveData,
   data,
+  handleDelete,
 }) {
   return (
     <div className="w-full">
@@ -47,6 +48,12 @@ export default function AdminEducationView({
                     <p>{item.degree}</p>
                     <p>{item.years}</p>
                     <p>{item.college}</p>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="mt-[10px] border hover:bg-red-700 hover:text-white-500 border-red-700 p-4 font-bold text-[16px] transition-colors duration-300 ease-in-out"
+                    >
+                      Delete
+                    </button>
                   </div>
                 ))
             : null}

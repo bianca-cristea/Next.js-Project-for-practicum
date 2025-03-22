@@ -33,6 +33,7 @@ export default function AdminResearchView({
   setFormData,
   handleSaveData,
   data,
+  handleDelete,
 }) {
   return (
     <div className="w-full">
@@ -49,6 +50,12 @@ export default function AdminResearchView({
                 <p>{item.year}</p>
                 <p>{item.authors}</p>
                 <p>{item.link}</p>
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="mt-[10px] border hover:bg-red-700 hover:text-white-500 border-red-700 p-4 font-bold text-[16px] transition-colors duration-300 ease-in-out"
+                >
+                  Delete
+                </button>
               </div>
             ))
           : null}

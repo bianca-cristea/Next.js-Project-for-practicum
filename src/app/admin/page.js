@@ -8,7 +8,14 @@ import AdminHPassionsView from "@/components/admin-view/passions";
 import AdminResearchView from "@/components/admin-view/research";
 import AdminSoftwareEngineeringView from "@/components/admin-view/software-engineering";
 import AdminTeachingView from "@/components/admin-view/teaching";
-import { addData, getData, login, updateData, resetPassword } from "@/services";
+import {
+  addData,
+  getData,
+  login,
+  updateData,
+  resetPassword,
+  deleteData,
+} from "@/services";
 import { useEffect, useState } from "react";
 
 const initialHomeFormData = { name: "", title: "" };
@@ -64,6 +71,16 @@ export default function AdminView() {
   const [resetPasswordFormData, setResetPasswordFormData] =
     useState(initialResetFormData);
 
+  const handleDelete = async (id) => {
+    const confirmed = confirm("Are you sure you want to delete this item?");
+    if (confirmed) {
+      const response = await deleteData(currentSelectedTab, id);
+      if (response.success) {
+        extractAllDatas(); // Actualizează datele după ștergere
+      }
+    }
+  };
+
   const menuItems = [
     {
       id: "home",
@@ -73,6 +90,7 @@ export default function AdminView() {
           formData={homeViewFormData}
           setFormData={setHomeViewFormData}
           handleSaveData={handleSaveData}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -85,6 +103,7 @@ export default function AdminView() {
           setFormData={setSoftwareEngineeringViewFormData}
           handleSaveData={handleSaveData}
           data={allData["software-engineering"]}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -97,6 +116,7 @@ export default function AdminView() {
           setFormData={setEducationViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.education}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -109,6 +129,7 @@ export default function AdminView() {
           setFormData={setResearchViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.research}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -121,6 +142,7 @@ export default function AdminView() {
           setFormData={setTeachingViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.teaching}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -133,6 +155,7 @@ export default function AdminView() {
           setFormData={setCompetitiveProgrammingViewFormData}
           handleSaveData={handleSaveData}
           data={allData["competitive-programming"]}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
@@ -145,10 +168,12 @@ export default function AdminView() {
           setFormData={setPassionsViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.passions}
+          handleDelete={handleDelete} // Transmite handleDelete ca prop
         />
       ),
     },
   ];
+
   async function extractAllDatas() {
     const response = await getData(currentSelectedTab);
     if (
@@ -167,7 +192,7 @@ export default function AdminView() {
       });
     }
   }
-  console.log(allData, "allData");
+
   async function handleSaveData() {
     const dataMap = {
       home: homeViewFormData,
@@ -188,6 +213,7 @@ export default function AdminView() {
       extractAllDatas();
     }
   }
+
   useEffect(() => {
     extractAllDatas();
   }, [currentSelectedTab]);
@@ -209,6 +235,7 @@ export default function AdminView() {
   useEffect(() => {
     setAuthUser(JSON.parse(sessionStorage.getItem("authUser")));
   }, []);
+
   async function handleLogin() {
     const res = await login(loginFormData);
     console.log(res, "login");
@@ -283,7 +310,7 @@ export default function AdminView() {
           setAuthUser(false);
           sessionStorage.removeItem("authUser");
         }}
-        className="fixed bottom-4  bg-white-500 right-5 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
+        className="fixed bottom-4  right-5 p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
       >
         Logout
       </button>

@@ -26,6 +26,7 @@ export default function AdminHPassionsView({
   formData,
   setFormData,
   handleSaveData,
+  handleDelete,
 }) {
   return (
     <div className="w-full">
