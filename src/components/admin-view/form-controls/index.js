@@ -1,6 +1,11 @@
 "use client";
 
 export default function FormControls({ controls, formData, setFormData }) {
+  if (!controls || !Array.isArray(controls)) {
+    console.error("Invalid controls:", controls);
+    return null;
+  }
+
   return controls.map((controlItem) => (
     <div className="mb-4" key={controlItem.name}>
       <label className="block text-gray-700 text-sm font-bold mb-2">

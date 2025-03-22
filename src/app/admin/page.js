@@ -8,7 +8,7 @@ import AdminHPassionsView from "@/components/admin-view/passions";
 import AdminResearchView from "@/components/admin-view/research";
 import AdminSoftwareEngineeringView from "@/components/admin-view/software-engineering";
 import AdminTeachingView from "@/components/admin-view/teaching";
-import { addData, getData, login, updateData } from "@/services";
+import { addData, getData, login, updateData, resetPassword } from "@/services";
 import { useEffect, useState } from "react";
 
 const initialHomeFormData = { name: "", title: "" };
@@ -21,6 +21,11 @@ const initialResearchFormData = {
   link: "",
 };
 const initialLoginFormData = { email: "", password: "" };
+const initialResetFormData = {
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 const initialTeachingFormData = { course: "", link: "" };
 const initialPassionsFormData = { title: "", description: "", photo: "" };
 const initialSoftwareEngineeringFormData = {
@@ -56,6 +61,8 @@ export default function AdminView() {
   const [update, setUpdate] = useState(false);
   const [authUser, setAuthUser] = useState(false);
   const [loginFormData, setLoginFormData] = useState(initialLoginFormData);
+  const [resetPasswordFormData, setResetPasswordFormData] =
+    useState(initialResetFormData);
 
   const menuItems = [
     {
@@ -202,10 +209,20 @@ export default function AdminView() {
   useEffect(() => {
     setAuthUser(JSON.parse(sessionStorage.getItem("authUser")));
   }, []);
-
   async function handleLogin() {
     const res = await login(loginFormData);
     console.log(res, "login");
+    if (res?.success) {
+      setAuthUser(true);
+      sessionStorage.setItem("authUser", JSON.stringify(true));
+    } else {
+      alert("Invalid credentials");
+    }
+  }
+
+  async function handleResetPassword() {
+    const res = await resetPassword(resetPasswordFormData);
+    console.log(res, "resetPassword");
     if (res?.success) {
       setAuthUser(true);
       sessionStorage.setItem("authUser", JSON.stringify(true));
