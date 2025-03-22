@@ -310,7 +310,7 @@ export default function AdminView() {
           setAuthUser(false);
           sessionStorage.removeItem("authUser");
         }}
-        className="fixed bottom-4  right-5 p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
+        className="fixed bottom-4 bg-orange-500 text-white-300 opacity-85 right-5 p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
       >
         Logout
       </button>
