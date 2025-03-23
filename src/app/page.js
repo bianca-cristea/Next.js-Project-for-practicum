@@ -21,7 +21,7 @@ const componentMap = {
   passions: ClientPassionsView,
 };
 
-async function extractData(currentSection) {
+export async function extractData(currentSection) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/${currentSection}/get`,
@@ -70,18 +70,32 @@ export default function Page() {
   }
 
   return (
-    <div className="flex h-screen">
-      <SidebarMenu
-        setActiveComponent={setActiveComponent}
-        activeLink={activeComponent}
-      />
-      <main className="h-full w-3/4 overflow-x-auto p-0">
-        {ActiveComponent ? (
-          <ActiveComponent data={data[activeComponent]} />
-        ) : (
-          <p>Select a section</p>
-        )}
-      </main>
-    </div>
+    <>
+      <Head>
+        <title>Profesor Universitatea din București - Marius Dumitran</title>
+        <meta
+          name="description"
+          content="Pagina oficială a profesorului Marius Dumitran de la Universitatea din București"
+        />
+        <meta
+          name="keywords"
+          content="Marius Dumitran, profesor, UniBuc, educație, UB"
+        />
+        <meta name="robots" content="index, follow" />
+      </Head>
+      <div className="flex h-screen">
+        <SidebarMenu
+          setActiveComponent={setActiveComponent}
+          activeLink={activeComponent}
+        />
+        <main className="h-full w-3/4 overflow-x-auto p-0">
+          {ActiveComponent ? (
+            <ActiveComponent data={data[activeComponent]} />
+          ) : (
+            <p>Select a section</p>
+          )}
+        </main>
+      </div>
+    </>
   );
 }
