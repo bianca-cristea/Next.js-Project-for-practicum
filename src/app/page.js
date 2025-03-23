@@ -71,7 +71,7 @@ export default function Page() {
 
   return (
     <>
-      <Head>
+      <head>
         <title>Profesor Universitatea din București - Marius Dumitran</title>
         <meta
           name="description"
@@ -82,7 +82,7 @@ export default function Page() {
           content="Marius Dumitran, profesor, UniBuc, educație, UB"
         />
         <meta name="robots" content="index, follow" />
-      </Head>
+      </head>
       <div className="flex h-screen">
         <SidebarMenu
           setActiveComponent={setActiveComponent}
