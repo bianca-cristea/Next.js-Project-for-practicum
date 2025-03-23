@@ -168,7 +168,7 @@ export default function AdminView() {
           setFormData={setPassionsViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.passions}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
