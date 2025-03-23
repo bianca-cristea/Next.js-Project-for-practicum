@@ -24,7 +24,7 @@ const componentMap = {
 async function extractData(currentSection) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/${currentSection}/get`,
+      `${process.env.NEXT_PUBLIC_API_URL}/${currentSection}/get`,
       {
         method: "GET",
         cache: "no-store",
