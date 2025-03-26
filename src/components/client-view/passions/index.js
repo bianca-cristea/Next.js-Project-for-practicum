@@ -44,7 +44,7 @@ export default function ClientPassionsView({ data }) {
               onClick={prevImage}
               className="absolute left-2 sm:left-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
-              ◀
+              &lt;
             </button>
 
             <div className="w-auto max-w-[800px]  sm:h-[20vh] md:h-[60vh] lg:h-[40vh] xl:h-[50vh]  flex justify-center items-center">
@@ -62,7 +62,7 @@ export default function ClientPassionsView({ data }) {
               onClick={nextImage}
               className="absolute right-2 sm:right-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
-              ▶
+              &gt;
             </button>
           </div>
         </div>
