@@ -18,7 +18,8 @@
 
 body {
   background-color: white !important;
-  color: inherit;
+  color: black !important;
+
   color: var(--foreground);
   background: var(--background);
   font-family: "Inter Tight", sans-serif;
