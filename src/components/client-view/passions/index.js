@@ -28,60 +28,58 @@ export default function ClientPassionsView({ data }) {
   };
   return (
     <div
-      className="max-w-screen-xl mt-10 px-6 sm:px-8 lg:px-16 mx-auto"
+      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16"
       id="project"
     >
-      <AnimationWrapper className={"mb-2"}>
-        <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] text-3xl lg:text-4xl xl:text-5xl font-small">
-            Passions
-          </h1>
-        </div>
+      <AnimationWrapper className="mb-6 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-semibold">
+          Passions
+        </h1>
       </AnimationWrapper>
+
       <AnimationWrapper>
-        <div className="relative w-1/2 mx-auto">
-          <div className="flex justify-center items-center relative">
+        <div className="relative flex flex-col items-center w-full max-w-4xl">
+          <div className="relative flex justify-center items-center w-full">
             <button
               onClick={prevImage}
-              className="absolute left-0 p-4 bg-[#34a5f9] text-white-300 rounded-full"
+              className="absolute left-2 sm:left-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
-              &lt;
+              ◀
             </button>
 
-            <div className="w-96 h-60 m-3 overflow-hidden flex justify-center items-center">
+            <div className="w-auto max-w-[800px]  sm:h-[20vh] md:h-[60vh] lg:h-[40vh] xl:h-[50vh]  flex justify-center items-center">
               <Image
                 src={images[currentIndex]}
                 alt={`Image ${currentIndex + 1}`}
-                width={800}
-                height={400}
-                className="object-cover w-full h-full rounded-lg"
+                width={700}
+                height={350}
+                objectFit="contain"
+                className="w-full h-full rounded-lg shadow-lg"
               />
             </div>
 
             <button
               onClick={nextImage}
-              className="absolute right-0 p-4 bg-[#34a5f9] text-white-300 rounded-full"
+              className="absolute right-2 sm:right-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
-              &gt;
+              ▶
             </button>
           </div>
         </div>
+
         <ul
-          className="project-wrapper ml-4 list text-center"
+          className="mt-6 text-center w-full max-w-4xl text-sm sm:text-md md:text-lg"
           ref={containerRef}
         >
-          {data && data.length
-            ? data.map((item, index) => (
-                <li
-                  className="w-full flex items-stretch text-center cursor-pointer list-disc"
-                  key={index}
-                >
-                  <h3 className="text-l text-black-600 text-center w-full m-2">
-                    {item.description}
-                  </h3>
-                </li>
-              ))
-            : null}
+          {data && data.length ? (
+            data.map((item, index) => (
+              <li key={index} className="text-gray-700 ">
+                {item.description}
+              </li>
+            ))
+          ) : (
+            <p className="text-gray-500">No passions available.</p>
+          )}
         </ul>
       </AnimationWrapper>
     </div>

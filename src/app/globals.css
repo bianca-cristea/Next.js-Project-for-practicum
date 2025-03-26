@@ -16,6 +16,7 @@
 }
 
 body {
+  background-color: #fff;
   color: var(--foreground);
   background: var(--background);
   font-family: "Inter Tight", sans-serif;

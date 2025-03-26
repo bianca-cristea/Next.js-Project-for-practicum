@@ -112,8 +112,9 @@ export default function Page() {
         <SidebarMenu
           setActiveComponent={setActiveComponent}
           activeLink={activeComponent}
+          className="h-screen w-2/4 md:1/4 lg:w-1/6"
         />
-        <main className="h-full w-3/4 overflow-x-auto p-0">
+        <main className="h-screen w-2/4 md:3/4 lg:w-5/6 overflow-x-scroll">
           {ActiveComponent ? (
             <ActiveComponent data={data[activeComponent]} />
           ) : (

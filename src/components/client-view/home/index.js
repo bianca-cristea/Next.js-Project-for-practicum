@@ -65,15 +65,18 @@ export default function ClientHomeView({ data }) {
   const containerRef = useRef(null);
 
   return (
-    <div className="h-screen lg:fixed m-0 p-0 px-8 xl:px-16" id="home">
+    <div
+      className="h-screen flex items-center justify-center lg:fixed m-0 p-0 px-4 sm:px-8 xl:px-16 py-12"
+      id="home"
+    >
       <AnimationWrapper>
         <motion.div
-          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-20 py-6 sm:py-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 lg:py-16 items-center w-full max-w-5xl"
           variants={setVariants}
         >
-          <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
-            <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-sm leading-normal">
-              {data && data.length
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <h1 className="ml-3 mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-semibold leading-tight sm:leading-normal">
+              {data?.length
                 ? data[0]?.name.split(" ").map((item, index) => (
                     <p key={index} className="text-[#000]">
                       {item}
@@ -81,8 +84,9 @@ export default function ClientHomeView({ data }) {
                   ))
                 : null}
             </h1>
-            <ul className="text-[#000]   mb-8 font-semibold list-disc">
-              {data && data.length
+
+            <ul className="text-[#000] flex flex-wrap justify-center md:justify-start text-xs sm:text-sm md:text-md mb-6 font-semibold list-disc">
+              {data?.length
                 ? data[0]?.title.split(",").map((item, idx) => (
                     <li className="m-2" key={idx}>
                       {item}
@@ -90,11 +94,12 @@ export default function ClientHomeView({ data }) {
                   ))
                 : null}
             </ul>
-            <motion.div className="flex gap-3 cursor-pointer">
+
+            <motion.div className="flex gap-4 justify-center md:justify-start">
               {socialIcons.map((item) => (
                 <motion.div
                   key={item.id}
-                  className="relative group"
+                  className="relative group text-sm sm:text-lg md:text-2xl"
                   initial={{ scale: 0 }}
                   animate={{ rotate: 360, scale: 1 }}
                   transition={{
@@ -108,21 +113,25 @@ export default function ClientHomeView({ data }) {
                   <a href={item.link} target="_blank" rel="noopener noreferrer">
                     {item.icon}
                   </a>
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mb-1 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="absolute top-full left-1/2 w-[15px] h-[5px] -translate-x-1/2 mb-1 bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
                     {item.id}
                   </span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
-          <motion.div ref={containerRef} className="flex w-full justify-end">
+
+          <motion.div
+            ref={containerRef}
+            className="flex justify-center md:justify-end w-full"
+          >
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="w-[350px] sm:w-[400px] md:w-[400px] h-[350px] sm:h-[400px] md:h-[400px] relative bg-green-main"
+              className="relative"
             >
-              <div className="relative">
-                <div className="w-[320px] sm:w-[350px] md:w-[350px] h-[320px] sm:h-[100px]   md:h-[350px] top-[40px] left-[-30px] rounded-lg border-[4px] border-b-black-900 absolute"></div>
+              <div className="relative mt-8 sm:mt-12 md:mt-16 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[230px] xl:w-[260px]">
+                <div className="absolute w-full h-full top-3 sm:top-4 md:top-6 lg:top-8 xl:top-10 left-[-8%] sm:left-[-10%] md:left-[-15%] lg:left-[-18%] xl:left-[-20%] rounded-lg border-[2px] md:border-[3px] lg:border-[4px] border-black"></div>
 
                 <Image
                   src={picture}
@@ -131,7 +140,7 @@ export default function ClientHomeView({ data }) {
                   quality={100}
                   height={150}
                   width={150}
-                  className="absolute top-[-15px] rounded-md"
+                  className="relative rounded-md"
                 />
               </div>
             </motion.div>

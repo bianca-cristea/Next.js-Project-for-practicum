@@ -30,42 +30,36 @@ export default function ClientCompetitiveProgrammingView({ data }) {
 
   return (
     <div
-      className="flex-col justify-between fixed ml-10 max-w-screen-xl mt-10 mb-6 sm:mt-10 sm:mb-14 px-6 sm:px-8 lg:px-9 mx-auto"
+      className="flex-col fixed ml-3 max-w-screen-xl mt-[25vh] md:mt-[6vh] mb-6  sm:mb-14 px-6 sm:px-8 lg:px-9 mx-auto"
       id="project"
     >
       <AnimationWrapper>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-20 text-2xl lg:text-4xl xl:text-5xl font-medium">
+          <h1 className="mb-20 text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-medium">
             Competitive Programming
           </h1>
         </div>
       </AnimationWrapper>
 
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row justify-between items-center">
         <AnimationWrapper>
-          <ul className="project-wrapper" ref={containerRef}>
+          <ul className="project-wrapper w-full" ref={containerRef}>
             {data && data.length
               ? data.map((item, index) => (
                   <li
                     className="w-full flex items-stretch cursor-pointer"
                     key={index}
                   >
-                    <div className="border-1 w-full relative transition-all rounded-lg flex flex-col">
-                      <div className="flex p-4 flex-col xl:flex-row w-full items-stretch xl:items-center">
-                        <div className="flex order-2 xl:order-1">
-                          <div className="flex flex-col">
-                            <a
-                              href={
-                                item.description ? item.description : undefined
-                              }
-                              target="_blank"
-                            >
-                              <h3 className="text-lg text-black-600 capitalize">
-                                {item.title}
-                              </h3>
-                            </a>
-                          </div>
-                        </div>
+                    <div className=" w-full relative transition-all rounded-lg flex flex-col">
+                      <div className="mb-2">
+                        <a
+                          href={item.description ? item.description : undefined}
+                          target="_blank"
+                        >
+                          <h3 className="text-base sm:text-lg text-black-600 capitalize">
+                            {item.title}
+                          </h3>
+                        </a>
                       </div>
                     </div>
                   </li>
@@ -74,25 +68,27 @@ export default function ClientCompetitiveProgrammingView({ data }) {
           </ul>
         </AnimationWrapper>
 
-        <div className="relative h-70 w-1/2 mx-auto">
-          <div className="w-96 h-70 flex justify-center items-center relative">
+        <div className="relative w-full sm:w-full lg:w-full">
+          <div className="w-full h-full flex justify-center items-center relative">
             <button
               onClick={prevImage}
-              className="absolute left-[-15] p-4 bg-[#34a5f9] text-white-300 rounded-full"
+              className="absolute left-[-15px] p-4 bg-[#34a5f9] text-white-300 rounded-full z-10"
             >
               &lt;
             </button>
-            <div className="w-96 h-60 m-3 overflow-hidden flex justify-center items-center">
+            <div className="w-auto h-[60vh] overflow-hidden flex justify-center items-center">
               <Image
                 src={images[currentIndex]}
                 alt={`Image ${currentIndex + 1}`}
-                width={800}
-                height={400}
+                layout="responsive"
+                width={1600}
+                height={900}
+                objectFit="contain"
               />
             </div>
             <button
               onClick={nextImage}
-              className="absolute right-[-15] p-4 bg-[#34a5f9] text-white-300 rounded-full"
+              className="absolute right-[-15px] p-4 bg-[#34a5f9] text-white-300 rounded-full z-10"
             >
               &gt;
             </button>

@@ -82,9 +82,9 @@ function CreateMenus({ activeLink, getMenuItems, setActiveLink }) {
 
 export default function SidebarMenu({ setActiveComponent, activeLink }) {
   return (
-    <nav className="overflow-x-auto flex flex-col items-center border-r border-blue-700 w-1/4 p-6 h-full space-y-6">
+    <nav className="overflow-x-auto justify-center flex flex-col items-center border-r border-blue-700  w-2/4 md:w-1/4  p-6 h-full space-y-6">
       <img
-        className="h-auto w-1/2 m-0"
+        className="h-auto w-full lg:w-1/2 m-0"
         src="https://unibuc.ro/wp-content/uploads/2019/02/Logo-UB-vertical-COLOR.jpg"
         alt="University logo"
       />
@@ -95,7 +95,7 @@ export default function SidebarMenu({ setActiveComponent, activeLink }) {
             onClick={() => {
               setActiveComponent(item.id);
             }}
-            className={`px-4 py-2 cursor-pointer block text-center ${
+            className={`px-4 text-xs md:text-sm lg:text-md py-2 cursor-pointer block text-center ${
               activeLink === item.id
                 ? "text-blue-700 font-bold border-l-4 border-blue-700"
                 : "text-black hover:text-blue-700 hover:bg-gray-100"
