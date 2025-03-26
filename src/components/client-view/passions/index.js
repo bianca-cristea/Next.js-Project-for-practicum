@@ -42,7 +42,7 @@ export default function ClientPassionsView({ data }) {
           <div className="relative flex justify-center items-center w-full">
             <button
               onClick={prevImage}
-              className="absolute left-2 sm:left-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
+              className="absolute text-white-300 left-2 sm:left-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
               &lt;
             </button>
@@ -60,7 +60,7 @@ export default function ClientPassionsView({ data }) {
 
             <button
               onClick={nextImage}
-              className="absolute right-2 sm:right-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
+              className="absolute text-white-300 right-2 sm:right-4 p-2 sm:p-3 md:p-4 lg:p-5 bg-[#34a5f9] text-white rounded-full shadow-md hover:bg-[#1d87d6] transition z-10"
             >
               &gt;
             </button>
