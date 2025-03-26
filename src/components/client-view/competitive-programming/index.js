@@ -76,7 +76,7 @@ export default function ClientCompetitiveProgrammingView({ data }) {
             >
               &lt;
             </button>
-            <div className="w-auto h-[60vh] overflow-hidden flex justify-center items-center">
+            <div className="w-auto lg:h-[60vh] overflow-hidden flex justify-center items-center">
               <Image
                 src={images[currentIndex]}
                 alt={`Image ${currentIndex + 1}`}
@@ -94,7 +94,7 @@ export default function ClientCompetitiveProgrammingView({ data }) {
             </button>
           </div>
 
-          <div className="flex justify-center mt-4 h-full">
+          <div className="flex justify-start items-start h-full">
             {images.map((pic, index) => (
               <img
                 key={index}

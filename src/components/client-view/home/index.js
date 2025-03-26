@@ -95,7 +95,7 @@ export default function ClientHomeView({ data }) {
                 : null}
             </ul>
 
-            <motion.div className="flex gap-4 justify-center md:justify-start">
+            <motion.div className="flex gap-3 justify-center md:justify-start">
               {socialIcons.map((item) => (
                 <motion.div
                   key={item.id}
@@ -123,14 +123,14 @@ export default function ClientHomeView({ data }) {
 
           <motion.div
             ref={containerRef}
-            className="flex justify-center md:justify-end w-full"
+            className="flex justify-center md:justify-center w-full"
           >
             <motion.div
               drag
               dragConstraints={containerRef}
               className="relative"
             >
-              <div className="relative mt-8 sm:mt-12 md:mt-16 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[230px] xl:w-[260px]">
+              <div className="relative sm:mt-6 md:mt-8 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[230px] xl:w-[260px]">
                 <div className="absolute w-full h-full top-3 sm:top-4 md:top-6 lg:top-8 xl:top-10 left-[-8%] sm:left-[-10%] md:left-[-15%] lg:left-[-18%] xl:left-[-20%] rounded-lg border-[2px] md:border-[3px] lg:border-[4px] border-black"></div>
 
                 <Image
