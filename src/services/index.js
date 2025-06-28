@@ -26,7 +26,7 @@ export async function addData(currentTab, formData) {
   }
 }
 
-export async function getData(currentTab) {
+export async function getData(currentTab, fetchOptions = {}) {
   try {
     const url =
       typeof window === "undefined"
@@ -37,6 +37,7 @@ export async function getData(currentTab) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       cache: "no-store",
+      ...fetchOptions,
     });
 
     const result = await response.json();
