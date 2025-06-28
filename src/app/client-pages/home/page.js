@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 import ClientHomeView from "@/components/client-view/home";
 import { getData } from "@/services";
-
-// export const metadata = {
-//   title: "Home",
-//   description: "Home Page",
-// };
-
+export const metadata = {
+  title: "Home",
+  description: "Home page",
+};
 export default function ClientHomePage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
