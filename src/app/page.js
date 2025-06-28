@@ -10,7 +10,6 @@ import ClientResearchView from "@/components/client-view/research";
 import ClientTeachingView from "@/components/client-view/teaching";
 import ClientCompetitiveProgrammingView from "@/components/client-view/competitive-programming";
 import ClientPassionsView from "@/components/client-view/passions";
-import Head from "next/head";
 
 const componentMap = {
   home: ClientHomeView,
@@ -20,6 +19,41 @@ const componentMap = {
   teaching: ClientTeachingView,
   "competitive-programming": ClientCompetitiveProgrammingView,
   passions: ClientPassionsView,
+};
+
+const metaDataMap = {
+  home: {
+    title: "Pagina principală - Profesor Marius Dumitran",
+    description:
+      "Bine ai venit pe pagina principală a profesorului Marius Dumitran.",
+  },
+  "software-engineering": {
+    title: "Software Engineering - Profesor Marius Dumitran",
+    description: "Proiecte și resurse pentru software engineering.",
+  },
+  education: {
+    title: "Educație - Profesor Marius Dumitran",
+    description:
+      "Informații despre cursurile și educația oferită de profesorul Dumitran.",
+  },
+  research: {
+    title: "Cercetare - Profesor Marius Dumitran",
+    description:
+      "Detalii despre cercetările și publicațiile profesorului Dumitran.",
+  },
+  teaching: {
+    title: "Predare - Profesor Marius Dumitran",
+    description:
+      "Metode și resurse pentru activitatea didactică a profesorului Dumitran.",
+  },
+  "competitive-programming": {
+    title: "Programare Competitivă - Profesor Marius Dumitran",
+    description: "Materiale și informații despre programarea competitivă.",
+  },
+  passions: {
+    title: "Pasiuni - Profesor Marius Dumitran",
+    description: "Descoperă pasiunile și interesele profesorului Dumitran.",
+  },
 };
 
 export async function extractData(currentSection) {
@@ -60,6 +94,22 @@ export default function Page() {
     }
   }, [activeComponent]);
 
+  useEffect(() => {
+    const metaData = metaDataMap[activeComponent] || metaDataMap.home;
+
+    document.title = metaData.title;
+
+    const descriptionTag = document.querySelector("meta[name='description']");
+    if (descriptionTag) {
+      descriptionTag.setAttribute("content", metaData.description);
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = metaData.description;
+      document.head.appendChild(meta);
+    }
+  }, [activeComponent]);
+
   const ActiveComponent = componentMap[activeComponent];
 
   if (loading) {
@@ -72,42 +122,6 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>Profesor Universitatea din București - Marius Dumitran</title>
-        <meta
-          name="description"
-          content="Pagina profesorului Marius Dumitran de la Universitatea din București"
-        />
-        <meta
-          name="keywords"
-          content="Marius Dumitran, profesor, UniBuc, Universitatea din București, educație, UB"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="Profesor Universitatea din București - Marius Dumitran"
-        />
-        <meta
-          property="og:description"
-          content="Pagina profesorului Marius Dumitran de la Universitatea din București"
-        />
-        <meta
-          property="og:url"
-          content="https://profesor-unibuc-dumitranmarius.vercel.app/"
-        />
-        <meta property="og:image" content="URL_imagine.jpg" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Profesor Universitatea din București - Marius Dumitran"
-        />
-        <meta
-          name="twitter:description"
-          content="Pagina profesorului Marius Dumitran de la Universitatea din București"
-        />
-        <meta name="twitter:image" content="URL_imagine.jpg" />
-      </Head>
       <div className="flex h-screen">
         <SidebarMenu
           setActiveComponent={setActiveComponent}
