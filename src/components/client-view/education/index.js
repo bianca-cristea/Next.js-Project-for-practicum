@@ -9,7 +9,6 @@ import {
   TimelineSeparator,
 } from "@mui/lab";
 import AnimationWrapper from "../animation-wrapper";
-import { motion } from "framer-motion";
 
 export default function ClientEducationView({ data }) {
   return (

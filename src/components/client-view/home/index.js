@@ -59,8 +59,6 @@ const socialIcons = [
 ];
 
 export default function ClientHomeView({ data }) {
-  console.log(data, "ClientHomeView");
-
   const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
 
