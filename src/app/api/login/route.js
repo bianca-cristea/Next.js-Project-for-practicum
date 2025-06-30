@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBAdmin } from "@/database";
 import User from "@/models/User";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
@@ -13,11 +13,8 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {
-    await connectToDB();
+    await connectToDBAdmin();
     const { email, password } = await req.json();
-
-    console.log("Received email:", email);
-    console.log("Received password:", password);
 
     const checkUser = await User.findOne({ email });
     if (!checkUser) {
@@ -39,13 +36,9 @@ export async function POST(req) {
       });
     }
 
-    console.log("Password matched");
-
     const token = sign({ userId: checkUser._id }, JWT_SECRET, {
       expiresIn: "1h",
     });
-
-    console.log("Generated token:", token);
 
     cookies().set("token", token, {
       httpOnly: true,

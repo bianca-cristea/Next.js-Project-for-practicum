@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import Home from "@/models/Home";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function PUT(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
 
     const extractData = await req.json();
     const { _id, name, title } = extractData;

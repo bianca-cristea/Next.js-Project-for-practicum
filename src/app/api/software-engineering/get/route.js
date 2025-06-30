@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import SoftwareEngineering from "@/models/SoftwareEngineering";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
     const extractData = await SoftwareEngineering.find({});
 
     if (extractData) {

@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import Research from "@/models/Research";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function DELETE(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
     const { id } = await req.json();
 
     if (!id) {

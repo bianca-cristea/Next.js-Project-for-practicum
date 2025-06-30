@@ -1,12 +1,12 @@
 import Home from "@/models/Home";
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
     const extractData = await Home.find({});
 
     if (extractData) {

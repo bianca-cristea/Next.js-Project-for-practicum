@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import Education from "@/models/Education";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
     const extractData = await req.json();
     const saveData = await Education.create(extractData);
     if (saveData) {

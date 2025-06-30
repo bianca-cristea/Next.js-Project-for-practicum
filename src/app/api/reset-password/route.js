@@ -1,11 +1,11 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBAdmin } from "@/database";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    await connectToDB();
+    await connectToDBAdmin();
     const { email, oldPassword, newPassword } = await req.json();
 
     const checkUser = await User.findOne({ email });

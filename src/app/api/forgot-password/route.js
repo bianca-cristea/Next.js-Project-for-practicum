@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBAdmin } from "@/database";
 import User from "@/models/User";
 import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req) {
   try {
-    await connectToDB();
+    await connectToDBAdmin();
     const { email } = await req.json();
 
     const user = await User.findOne({ email });

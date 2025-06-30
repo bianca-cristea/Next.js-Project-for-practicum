@@ -1,4 +1,4 @@
-import connectToDB from "@/database";
+import connectToDB, { connectToDBApp } from "@/database";
 import Passion from "@/models/Passion";
 import { NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {
-    await connectToDB();
+    await connectToDBApp();
     const extractData = await Passion.find({});
 
     if (extractData) {
