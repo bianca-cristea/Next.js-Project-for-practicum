@@ -6,4 +6,46 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/competitive-programming</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> 
+   <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/education</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> 
+   <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/home</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> 
+    <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/passions</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/research</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/software-engineering</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <url>
+    <loc>https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/teaching</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
