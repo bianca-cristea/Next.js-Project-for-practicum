@@ -1,4 +1,4 @@
-import connectToDB, { connectToDBAdmin } from "@/database";
+import { connectToDB } from "@/database";
 import User from "@/models/User";
 import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";

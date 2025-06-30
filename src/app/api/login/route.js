@@ -1,4 +1,4 @@
-import connectToDB, { connectToDBAdmin } from "@/database";
+import { connectToDB } from "@/database";
 import User from "@/models/User";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";

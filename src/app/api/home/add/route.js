@@ -1,5 +1,5 @@
 import Home from "@/models/Home";
-import connectToDB, { connectToDBApp } from "@/database";
+import { connectToDB } from "@/database";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";

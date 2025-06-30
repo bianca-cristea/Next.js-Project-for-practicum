@@ -1,4 +1,4 @@
-import connectToDB, { connectToDBApp } from "@/database";
+import { connectToDB } from "@/database";
 import Passion from "@/models/Passion";
 import { NextResponse } from "next/server";
 
