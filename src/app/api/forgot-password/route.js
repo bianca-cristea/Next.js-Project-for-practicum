@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req) {
   try {
-    await connectToDBAdmin();
+    await connectToDB();
     const { email } = await req.json();
 
     const user = await User.findOne({ email });

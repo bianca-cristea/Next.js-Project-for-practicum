@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {
-    await connectToDBApp();
+    await connectToDB();
     const extractData = await Research.find({});
 
     if (extractData) {

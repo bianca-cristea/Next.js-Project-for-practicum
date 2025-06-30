@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function DELETE(req) {
   try {
-    await connectToDBApp();
+    await connectToDB();
     const { id } = await req.json();
 
     if (!id) {

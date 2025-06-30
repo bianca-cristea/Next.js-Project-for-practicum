@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {
-    await connectToDBApp();
+    await connectToDB();
     const extractData = await req.json();
     const saveData = await Research.create(extractData);
     if (saveData) {

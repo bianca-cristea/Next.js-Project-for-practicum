@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function PUT(req) {
   try {
-    await connectToDBApp();
+    await connectToDB();
 
     const extractData = await req.json();
     const { _id, name, title } = extractData;

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    await connectToDBAdmin();
+    await connectToDB();
     const { email, oldPassword, newPassword } = await req.json();
 
     const checkUser = await User.findOne({ email });

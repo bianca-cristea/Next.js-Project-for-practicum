@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {
-    await connectToDBAdmin();
+    await connectToDB();
     const { email, password } = await req.json();
 
     const checkUser = await User.findOne({ email });
