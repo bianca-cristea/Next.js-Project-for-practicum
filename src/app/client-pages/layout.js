@@ -6,7 +6,9 @@ export default function ClientLayout({ children }) {
   return (
     <div className="flex h-screen">
       <SidebarMenu />
-      <main className="h-screen w-3/4 overflow-y-auto p-4">{children}</main>
+      <main className="flex-1 h-screen overflow-y-auto bg-white">
+        {children}
+      </main>
     </div>
   );
 }

@@ -64,7 +64,7 @@ export default function ClientHomeView({ data }) {
 
   return (
     <div
-      className="h-screen flex items-center justify-center lg:fixed m-0 p-0 px-4 sm:px-8 xl:px-16 py-12"
+      className="h-full w-full flex items-center justify-center px-4 sm:px-8 xl:px-16 py-12"
       id="home"
     >
       <AnimationWrapper>

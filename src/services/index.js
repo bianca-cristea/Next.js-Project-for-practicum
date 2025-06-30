@@ -14,12 +14,15 @@ function getFullUrl(path) {
 export async function addData(currentTab, formData) {
   try {
     const url = getFullUrl(`/api/${currentTab}/add`);
+
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
+
     const result = await response.json();
+
     return result;
   } catch (error) {
     console.log(error);
@@ -27,11 +30,15 @@ export async function addData(currentTab, formData) {
 }
 
 export async function getData(currentTab, fetchOptions = {}) {
+  console.log("Fetching data for tab:", currentTab);
   try {
-    const url =
-      typeof window === "undefined"
-        ? `${baseUrl}${currentTab}/get`
-        : `/api/${currentTab}/get`;
+    let url = getFullUrl(`/api/${currentTab}/get`);
+
+    if (currentTab === "home") {
+      url += `?_t=${Date.now()}`;
+    }
+
+    console.log("Fetching URL:", url);
 
     const response = await fetch(url, {
       method: "GET",
@@ -50,6 +57,7 @@ export async function getData(currentTab, fetchOptions = {}) {
 export async function updateData(currentTab, formData) {
   try {
     const url = getFullUrl(`/api/${currentTab}/update`);
+    console.log("Fetching URL:", url);
     const response = await fetch(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

@@ -76,7 +76,7 @@ export default function AdminView() {
     if (confirmed) {
       const response = await deleteData(currentSelectedTab, id);
       if (response.success) {
-        extractAllDatas(); // Actualizează datele după ștergere
+        extractAllDatas();
       }
     }
   };
@@ -90,7 +90,7 @@ export default function AdminView() {
           formData={homeViewFormData}
           setFormData={setHomeViewFormData}
           handleSaveData={handleSaveData}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
@@ -103,7 +103,7 @@ export default function AdminView() {
           setFormData={setSoftwareEngineeringViewFormData}
           handleSaveData={handleSaveData}
           data={allData["software-engineering"]}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
@@ -116,7 +116,7 @@ export default function AdminView() {
           setFormData={setEducationViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.education}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
@@ -129,7 +129,7 @@ export default function AdminView() {
           setFormData={setResearchViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.research}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
@@ -142,7 +142,7 @@ export default function AdminView() {
           setFormData={setTeachingViewFormData}
           handleSaveData={handleSaveData}
           data={allData?.teaching}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
@@ -155,7 +155,7 @@ export default function AdminView() {
           setFormData={setCompetitiveProgrammingViewFormData}
           handleSaveData={handleSaveData}
           data={allData["competitive-programming"]}
-          handleDelete={handleDelete} // Transmite handleDelete ca prop
+          handleDelete={handleDelete}
         />
       ),
     },
