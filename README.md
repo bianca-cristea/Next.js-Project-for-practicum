@@ -1,23 +1,26 @@
 # Academic Portfolio Website
 
+Live demo: [https://your-site.vercel.app](https://your-site.vercel.app)
+
 This is a [Next.js](https://nextjs.org) project built to showcase the academic profile, teaching activity, research, and personal interests of **Lect. Dr. Marius Dumitran**.
 
-The website includes sections such as:
+It includes an Admin Panel with authentication to add, modify, or delete content.
 
+## Features
 - Research & Publications
 - Teaching and Courses
 - Software Engineering Projects
 - Competitive Programming
 - Passions and Personal Interests
 
-It was developed using the **App Router** (`app/` directory) and is deployed on [Vercel](https://vercel.com).
+## Tech Stack
+- Next.js (App Router)
+- React
+- Tailwind CSS (if applicable)
+- Node.js
+- Vercel (deployment)
 
----
-
-Getting Started
-
-Install dependencies and run the development server:
-
+## Getting Started
+```bash
 npm install
 npm run dev
-
