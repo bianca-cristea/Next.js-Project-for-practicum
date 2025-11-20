@@ -1,8 +1,8 @@
 # Academic Portfolio Website
 
-[Live demo](https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/home)
+Click here -> [Live demo](https://profesor-unibuc-dumitranmarius.vercel.app/client-pages/home)
 
-This is a [Next.js](https://nextjs.org) project built to showcase the academic profile, teaching activity, research, and personal interests of **Lect. Dr. Marius Dumitran**.
+This is a Next.js project built to showcase the academic profile, teaching activity, research, and personal interests of **Lect. Dr. Marius Dumitran**.
 
 It includes an Admin Panel with authentication to add, modify, or delete content.
 
