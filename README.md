@@ -14,13 +14,10 @@ It was developed using the **App Router** (`app/` directory) and is deployed on 
 
 ---
 
-## 🚀 Getting Started
+Getting Started
 
 Install dependencies and run the development server:
 
-```bash
 npm install
 npm run dev
-# or
-yarn dev
-```
+
